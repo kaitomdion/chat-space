@@ -1,0 +1,50 @@
+   
+.header
+  %p.header__text グループを作成しました
+
+.left-contents
+  .left-header
+    .left-header__box
+      %p.left-header__box__name test-user
+      %ul.left-header__box__botton
+        %li.left-header__box__botton__new-group
+          %a{:href => "#"}
+            %i.fa.fa-edit
+        %li.left-header__box__botton__new-acount
+          %a{:href => "#"}
+            %i.fa.fa-cog
+  .left-groups
+    .group
+      %p.group__group-name test-group
+      %p.group__group-text さようなら
+    .group
+      %p.group__group-name sample-group
+      %p.group__group-text hello
+    .group
+      %p.group__group-name example
+      %p.group__group-text まだメッセージがありません
+.chat-space
+  .top
+    .top__left-box
+      %p.top__left-box__group-name tech-expert
+      %p.top__left-box__member Member
+    %a.top__edit-box{:href => "#"} Edit
+  .talks
+    .talk
+      .talk__user-info
+        %p.talk__user-info__name test-user
+        %p.talk__user-info__time 2019/02/13(Wed) 17:50:36
+      %p.talk__text こんにちは！
+    .talk
+      .talk__user-info
+        %p.talk__user-info__name test-user
+        %p.talk__user-info__time 2019/02/13(Wed) 17:50:42
+      %p.talk__text さようなら
+  .footer
+    .footer__message
+      .footer__message__box
+        %p.footer__message__box__text type a message
+        %label.footer__message__box__image
+          %i.fa.fa-image.fa-2x
+          %input.footer__message__box__image__file{:type => "file"}/
+      %a.footer__message__send-botton{:href => "#"} Send
