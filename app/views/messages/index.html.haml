@@ -40,11 +40,11 @@
         %p.talk__user-info__name test-user
         %p.talk__user-info__time 2019/02/13(Wed) 17:50:42
       %p.talk__text さようなら
-  .footer
-    .footer__message
-      .footer__message__box
-        %p.footer__message__box__text type a message
-        %label.footer__message__box__image
+  .form
+    .form__message
+      .form__message__box
+        %p.form__message__box__text type a message
+        %label.form__message__box__image
           %i.fa.fa-image.fa-2x
-          %input.footer__message__box__image__file{type: "file"}/
-      =link_to "Send", "#", class: "footer__message__send-botton" 
+          %input.form__message__box__image__file{type: "file"}/
+      =link_to "Send", "#", class: "form__message__send-botton" 
