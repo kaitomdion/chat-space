@@ -28,7 +28,7 @@
     .top__left-box
       %p.top__left-box__group-name tech-expert
       %p.top__left-box__member Member
-    %a.top__edit-box{href: "#"} Edit
+    =link_to 'Edit','#', class:'top__edit-box'
   .talks
     .talk
       .talk__user-info
@@ -47,4 +47,4 @@
         %label.footer__message__box__image
           %i.fa.fa-image.fa-2x
           %input.footer__message__box__image__file{type: "file"}/
-      %a.footer__message__send-botton{href: "#"} Send
+      =link_to "Send", "#", class: "footer__message__send-botton" 
