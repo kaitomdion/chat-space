@@ -1,0 +1,15 @@
+@import "color";
+
+.notification {
+  .notice {
+    background-color: $colorWriteBlue;
+    color: $white;
+    text-align: center;
+  }
+
+  .alert {
+    background-color: $orange;
+    color: $white;
+    text-align: center;
+  }
+}
