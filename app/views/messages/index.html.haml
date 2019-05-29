@@ -16,14 +16,12 @@
             %i.fa.fa-cog
   .left-groups
     .group
-      %p.group__group-name test-group
-      %p.group__group-text さようなら
-    .group
-      %p.group__group-name sample-group
-      %p.group__group-text hello
-    .group
-      %p.group__group-name example
-      %p.group__group-text まだメッセージがありません
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          .group__group-name 
+            = group.name
+          .group__group-text 
+            まだメッセージがありません
 .chat-space
   .top
     .top__left-box

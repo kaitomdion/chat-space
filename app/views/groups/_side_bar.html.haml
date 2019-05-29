@@ -1,0 +1,20 @@
+.left-contents
+  .left-header
+    .left-header__box
+      %p.left-header__box__name 
+        = current_user.name
+      %ul.left-header__box__botton
+        %li.left-header__box__botton__new-group
+          = link_to new_group_path do
+            %i.fa.fa-edit
+        %li.left-header__box__botton__new-acount
+          = link_to edit_user_path(current_user) do
+            %i.fa.fa-cog
+  .left-groups
+    .group
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          .group__group-name 
+            = group.name
+          .group__group-text 
+            まだメッセージがありません
