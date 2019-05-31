@@ -50,9 +50,11 @@ html{
     }
   }
   .talks{
-    height: 440px;
-    background-color: #fafafa;
-    padding: 46px 40px;
+    height: calc(100vh - 190px);
+    background-color: #FAFAFA;
+    box-sizing: border-box;
+    padding: 46px 40px 0;
+    overflow: scroll;
     .talk{
       &__user-info{
         padding-bottom: 10px;
@@ -70,9 +72,13 @@ html{
           }
       }
       &__text{
-        font-size: 14px;
-        color: $colorGray;
-        padding-bottom: 40px;
+        &__content{
+          font-size: 14px;
+          color: $colorGray;
+          padding-bottom: 40px;
+        }
+        &__image{
+        }
       }
     }
   }
@@ -149,7 +155,7 @@ html{
     }
   }
  .left-groups{
-   height: 565px;
+   height: 625px;
    background-color: #2f3e51;
    padding: 20px;
  }
