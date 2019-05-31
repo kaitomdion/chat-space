@@ -1,34 +1,33 @@
    
-.header
-  %p.header__text グループを作成しました
+-# .header
+-#   %p.header__text グループを作成しました
 
 .left-contents
   .left-header
     .left-header__box
-      %p.left-header__box__name test-user
+      %p.left-header__box__name 
+        = current_user.name
       %ul.left-header__box__botton
         %li.left-header__box__botton__new-group
-          = link_to "#" do
+          = link_to new_group_path do
             %i.fa.fa-edit
         %li.left-header__box__botton__new-acount
-          = link_to "#" do
+          = link_to edit_user_path(current_user) do
             %i.fa.fa-cog
   .left-groups
     .group
-      %p.group__group-name test-group
-      %p.group__group-text さようなら
-    .group
-      %p.group__group-name sample-group
-      %p.group__group-text hello
-    .group
-      %p.group__group-name example
-      %p.group__group-text まだメッセージがありません
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          .group__group-name 
+            = group.name
+          .group__group-text 
+            まだメッセージがありません
 .chat-space
   .top
     .top__left-box
       %p.top__left-box__group-name tech-expert
       %p.top__left-box__member Member
-    =link_to 'Edit','#', class:'top__edit-box'
+    =link_to 'Edit','/groups/current_user_id/edit', class:'top__edit-box'
   .talks
     .talk
       .talk__user-info
