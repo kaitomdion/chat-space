@@ -1,7 +1,4 @@
    
--# .header
--#   %p.header__text グループを作成しました
-
 .left-contents
   .left-header
     .left-header__box
@@ -39,11 +36,15 @@
         %p.talk__user-info__name test-user
         %p.talk__user-info__time 2019/02/13(Wed) 17:50:42
       %p.talk__text さようなら
+  
   .form
-    .form__message
-      .form__message__box
-        %p.form__message__box__text type a message
-        %label.form__message__box__image
-          %i.fa.fa-image.fa-2x
-          %input.form__message__box__image__file{type: "file"}/
-      =link_to "Send", "#", class: "form__message__send-botton" 
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'
+
+
+ 
