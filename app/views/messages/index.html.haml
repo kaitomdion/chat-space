@@ -1,49 +1,42 @@
-   
--# .header
--#   %p.header__text グループを作成しました
+.wrapper 
+  .left-contents
+    .left-header
+      .left-header__box
+        %p.left-header__box__name 
+          = current_user.name
+        %ul.left-header__box__botton
+          %li.left-header__box__botton__new-group
+            = link_to new_group_path do
+              %i.fa.fa-edit
+          %li.left-header__box__botton__new-acount
+            = link_to edit_user_path(current_user) do
+              %i.fa.fa-cog
+    .left-groups
+      .group
+        - current_user.groups.each do |group|
+          = link_to group_messages_path(group) do
+            .group__group-name 
+              = group.name
+            .group__group-text 
+              = group.show_last_message
+  .chat-space
+    .top
+      .top__left-box
+        %p.top__left-box__group-name tech-expert
+        %p.top__left-box__member Member
+      =link_to 'Edit','/groups/current_user_id/edit', class:'top__edit-box'
+    .talks
+      = render @messages
+      
+    
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
 
-.left-contents
-  .left-header
-    .left-header__box
-      %p.left-header__box__name 
-        = current_user.name
-      %ul.left-header__box__botton
-        %li.left-header__box__botton__new-group
-          = link_to new_group_path do
-            %i.fa.fa-edit
-        %li.left-header__box__botton__new-acount
-          = link_to edit_user_path(current_user) do
-            %i.fa.fa-cog
-  .left-groups
-    .group
-      - current_user.groups.each do |group|
-        = link_to group_messages_path(group) do
-          .group__group-name 
-            = group.name
-          .group__group-text 
-            まだメッセージがありません
-.chat-space
-  .top
-    .top__left-box
-      %p.top__left-box__group-name tech-expert
-      %p.top__left-box__member Member
-    =link_to 'Edit','/groups/current_user_id/edit', class:'top__edit-box'
-  .talks
-    .talk
-      .talk__user-info
-        %p.talk__user-info__name test-user
-        %p.talk__user-info__time 2019/02/13(Wed) 17:50:36
-      %p.talk__text こんにちは！
-    .talk
-      .talk__user-info
-        %p.talk__user-info__name test-user
-        %p.talk__user-info__time 2019/02/13(Wed) 17:50:42
-      %p.talk__text さようなら
-  .form
-    .form__message
-      .form__message__box
-        %p.form__message__box__text type a message
-        %label.form__message__box__image
-          %i.fa.fa-image.fa-2x
-          %input.form__message__box__image__file{type: "file"}/
-      =link_to "Send", "#", class: "form__message__send-botton" 
+
+ 
