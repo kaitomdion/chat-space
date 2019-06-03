@@ -56,6 +56,7 @@ html{
     padding: 46px 40px 0;
     overflow: scroll;
     .talk{
+      padding-bottom: 40px;
       &__user-info{
         padding-bottom: 10px;
           &__name{
@@ -75,7 +76,6 @@ html{
         &__content{
           font-size: 14px;
           color: $colorGray;
-          padding-bottom: 40px;
         }
         &__image{
         }
