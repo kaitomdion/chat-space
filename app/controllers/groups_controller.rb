@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :set_group, only: [:edit, :update] 
 
   def index
   end
@@ -7,11 +8,6 @@ class GroupsController < ApplicationController
     @group = Group.new
     @group.users << current_user
   end
-
-  def edit
-    @group = Group.new
-  end
-
 
   def create
     @group = Group.new(group_params)
@@ -22,6 +18,10 @@ class GroupsController < ApplicationController
     end
   end
   
+  def edit
+    @members = Group.new
+  end
+
   def update
     if @group.update(group_params)
       redirect_to group_messages_path(@group), notice: 'グループを編集しました'
