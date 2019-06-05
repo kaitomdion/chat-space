@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message) {
     var content = message.content ? `${ message.content }` : "";
     var image = message.image ? `<img src= ${ message.image }>` : "";
-    var html = `<div class = "talk">
+    var html = `<div class = "talk" data-id=${message.id}>
                    <div class = "talk__user-info">
                       <div class = "talk__user-info__name">
                           ${message.user_name}
@@ -22,6 +22,7 @@ $(function(){
                  </div>`
                 
     return html;
+    
   }
 
   $('#new_message').on('submit', function(e){
@@ -47,4 +48,27 @@ $(function(){
   })
   return false;
 })
+
+ var reloadMessages = function(){
+   last_message_id = $('.talk:last').data('id');
+   $.ajax({
+     url: "api/messages",
+     type: 'get',
+     dataType: 'json',
+     data: {id: last_message_id}
+   })
+   .done(function(messages) {
+    messages.forEach(function(message){
+      var insertHTML = buildHTML(message);
+      $('.talks').append(insertHTML);
+      $('.talks').animate({ scrollTop: $('.talks')[0].scrollHeight});
+     })
+    
+
+  })
+  .fail(function() {
+    alert('メッセージを送れませんでした。');
+  });
+ };
+    setInterval(reloadMessages, 5000);
 });
