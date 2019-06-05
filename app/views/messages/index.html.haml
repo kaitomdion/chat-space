@@ -22,8 +22,11 @@
   .chat-space
     .top
       .top__left-box
-        %p.top__left-box__group-name tech-expert
-        %p.top__left-box__member Member
+        %p.top__left-box__group-name 
+          = @group.name
+        %p.top__left-box__member 
+          - @group.users.each do |human|
+            = human.name
       = link_to edit_group_path(@group), class:'top__edit-box' do
         .top__edit-box__btn Edit
     .talks
