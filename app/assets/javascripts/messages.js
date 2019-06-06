@@ -47,10 +47,11 @@ $(function(){
     alert('入力してください');
   })
   return false;
-})
+});
 
  var reloadMessages = function(){
-   last_message_id = $('.talk:last').data('id');
+  if (window.location.href.match(/\/groups\/\d+\/messages/)) {
+   var last_message_id = $('.talk:last').data('id');
    $.ajax({
      url: "api/messages",
      type: 'get',
@@ -58,17 +59,18 @@ $(function(){
      data: {id: last_message_id}
    })
    .done(function(messages) {
+    var insertHTML = '';
     messages.forEach(function(message){
-      var insertHTML = buildHTML(message);
+      insertHTML = buildHTML(message);
       $('.talks').append(insertHTML);
       $('.talks').animate({ scrollTop: $('.talks')[0].scrollHeight});
-     })
-    
-
-  })
-  .fail(function() {
-    alert('メッセージを送れませんでした。');
-  });
- };
-    setInterval(reloadMessages, 5000);
+      })
+    })
+    .fail(function() {
+      console.log(messages)
+      // alert('メッセージを送れませんでした。');
+    });
+    }
+  };
+  setInterval(reloadMessages, 5000);
 });
