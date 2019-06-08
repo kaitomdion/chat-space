@@ -22,7 +22,6 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 
-
   desc 'upload secrets.yml'
     task :upload do
       on roles(:app) do |host|
@@ -44,6 +43,7 @@ set :default_env, {
 }
 
 set :linked_files, %w{ config/secrets.yml }
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
