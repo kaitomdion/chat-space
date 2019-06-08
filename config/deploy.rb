@@ -22,7 +22,7 @@ namespace :deploy do
     invoke 'unicorn:restart'
   end
 
-  desc 'upload secrets.yml'
+    desc 'upload secrets.yml'
     task :upload do
       on roles(:app) do |host|
         if test "[ ! -d #{shared_path}/config ]"
