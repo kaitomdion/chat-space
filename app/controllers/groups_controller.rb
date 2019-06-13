@@ -19,7 +19,6 @@ class GroupsController < ApplicationController
   end
   
   def edit
-    @members = Group.new
   end
 
   def update

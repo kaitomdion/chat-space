@@ -53,9 +53,9 @@ $(function(){
         $('#chat-group-users').append(html);
         $(this).parent().remove();
       });
-
-      $("#chat-group-users").on("click", ".user-search-remove", function() {      
+    });
+      $("#chat-group-users").on("click", ".user-search-remove", function() {     
         $(this).parent().remove();
       })
-  });
+ 
 });
